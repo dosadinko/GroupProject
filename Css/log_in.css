@@ -1,8 +1,7 @@
-﻿body
-{
+﻿#login-forma {
+    width: 100%;
 }
-#forma {
-	margin-top: 200px; 
-	margin-left: 400px;
-	margin-right: 400px;
+
+input[text] {
+    width: 50%;
 }

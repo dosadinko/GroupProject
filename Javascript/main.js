@@ -1,8 +1,20 @@
 $(document).ready(function() {
+
+    $('#register-div').hide();
+    // end of document.ready
+});
+
+function SwitchToRegForm() {
+
+    $('#login-div').hide();
+    $('#register-div').show();
+}
+
+function Login() {
+
     $("#login-btn").click(function(e) {
-        e.preventDefault();
-        var username = $("#forma_log_in").val();
         var password = $("#password").val();
+        var username = $("#forma_log_in").val();
         $.ajax({
             type: 'POST',
             url: 'api/loginController.php',
@@ -15,5 +27,6 @@ $(document).ready(function() {
             }
         });
     });
-    document.title = 'Expenses-Tracker';
-});
+    e.preventDefault();
+
+}
