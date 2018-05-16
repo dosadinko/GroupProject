@@ -1,16 +1,16 @@
-$(document).ready(function () {
-    $("#login-btn").click(function (e) {
+$(document).ready(function() {
+    $("#login-btn").click(function(e) {
         e.preventDefault();
-        var username = $("#email1").val();
-        var password = $("#password1").val();
+        var username = $("#forma_log_in").val();
+        var password = $("#password").val();
         $.ajax({
-            type:'POST',
-            url:'api/loginController.php',
-            data:{username:username, password:password},
-            success:function (data) {
+            type: 'POST',
+            url: 'api/loginController.php',
+            data: { username: username, password: password },
+            success: function(data) {
 
             },
-            error:function () {
+            error: function() {
                 console.log("error");
             }
         })
