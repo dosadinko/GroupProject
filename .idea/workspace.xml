@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1af112eb-6dcc-48bf-b8b1-d1198cbb65ae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/model/account.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/account.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RestApi/loginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +41,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/utils.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RestApi/loginController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -62,11 +71,11 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/api/loginController.php" />
         <option value="$PROJECT_DIR$/JS/main.js" />
-        <option value="$PROJECT_DIR$/RestApi/loginController.php" />
         <option value="$PROJECT_DIR$/model/expence.php" />
         <option value="$PROJECT_DIR$/model/connection.php" />
         <option value="$PROJECT_DIR$/model/account.php" />
         <option value="$PROJECT_DIR$/model/utils.php" />
+        <option value="$PROJECT_DIR$/RestApi/loginController.php" />
       </list>
     </option>
   </component>
@@ -96,11 +105,6 @@
             <path>
               <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="GroupProject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GroupProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GroupProject" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -141,12 +145,12 @@
       <workItem from="1526461852432" duration="2000" />
       <workItem from="1526462006012" duration="2611000" />
       <workItem from="1526467133670" duration="796000" />
-      <workItem from="1526471392674" duration="2825000" />
+      <workItem from="1526471392674" duration="3114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6563000" />
+    <option name="totallyTimeSpent" value="6852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -224,13 +228,6 @@
     <entry file="file://$PROJECT_DIR$/log_in.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/RestApi/loginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/account.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -255,7 +252,14 @@
     <entry file="file://$PROJECT_DIR$/model/utils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RestApi/loginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
