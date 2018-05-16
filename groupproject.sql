@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2018 at 02:03 PM
+-- Generation Time: May 16, 2018 at 02:38 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -48,16 +48,9 @@ CREATE TABLE `expences` (
   `amount_payed` decimal(18,2) NOT NULL,
   `currency_type` varchar(5) NOT NULL,
   `expence_date` int(255) NOT NULL,
-  `payed_date` int(255) NOT NULL
+  `payed_date` int(255) NOT NULL,
+  `account_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `expences`
---
-
-INSERT INTO `expences` (`id`, `description`, `payee`, `amount_payed`, `currency_type`, `expence_date`, `payed_date`) VALUES
-(1, 'heroin', 'dinko', '243.00', 'BAM', 1526472009, 1526472009),
-(2, 'heroin', 'dinko', '243.00', 'BAM', 1526472091, 1526472091);
 
 --
 -- Indexes for dumped tables
@@ -73,7 +66,8 @@ ALTER TABLE `accounts`
 -- Indexes for table `expences`
 --
 ALTER TABLE `expences`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -90,6 +84,16 @@ ALTER TABLE `accounts`
 --
 ALTER TABLE `expences`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `expences`
+--
+ALTER TABLE `expences`
+  ADD CONSTRAINT `expences_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
