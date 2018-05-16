@@ -1,12 +1,6 @@
 <?php
-$a = 'dosadinko';
-$b = 'dosadinko';
-
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-if($a == $username && $b == $password){
-    echo json_encode('ulogovan');
-    return;
-}
-echo json_encode('nije ulogovan');
+require_once ('../model/connection.php');
+$date = new DateTime();
+$true_date = $date->getTimestamp();
+$query = "INSERT INTO expences (description, payee, amount_payed, currency_type, expence_date, payed_date) values ('heroin', 'dinko', 243, 'BAM', $true_date, $true_date)";
+mysqli_query($conn,$query);
