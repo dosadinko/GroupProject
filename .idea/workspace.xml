@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1af112eb-6dcc-48bf-b8b1-d1198cbb65ae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/model/account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/expence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestApi/loginController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/connection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/account.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +17,8 @@
       <file leaf-file-name="connection.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/connection.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+            <state>
+              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -30,26 +26,26 @@
       <file leaf-file-name="expence.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/expence.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-726">
+            <state>
               <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="account.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="account.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/account.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+            <state relative-caret-position="119">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="utils.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/utils.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -68,9 +64,9 @@
         <option value="$PROJECT_DIR$/JS/main.js" />
         <option value="$PROJECT_DIR$/RestApi/loginController.php" />
         <option value="$PROJECT_DIR$/model/expence.php" />
-        <option value="$PROJECT_DIR$/model/utils.php" />
         <option value="$PROJECT_DIR$/model/connection.php" />
         <option value="$PROJECT_DIR$/model/account.php" />
+        <option value="$PROJECT_DIR$/model/utils.php" />
       </list>
     </option>
   </component>
@@ -145,12 +141,12 @@
       <workItem from="1526461852432" duration="2000" />
       <workItem from="1526462006012" duration="2611000" />
       <workItem from="1526467133670" duration="796000" />
-      <workItem from="1526471392674" duration="2062000" />
+      <workItem from="1526471392674" duration="2825000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5800000" />
+    <option name="totallyTimeSpent" value="6563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -235,31 +231,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/connection.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        <state>
+          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/expence.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/utils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/expence.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-726">
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>

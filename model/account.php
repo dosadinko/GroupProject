@@ -2,9 +2,14 @@
 
 class account
 {
+    private $id;
     private $email;
     private $password;
     private $username;
+
+    public function getId(){
+        return $this->id;
+    }
 
     public function setEmail($email){
         $this->email = $email;
