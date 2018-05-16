@@ -1,15 +1,19 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "groupproject";
+class connection
+{
+   private $servername;
+       private $username;
+       private $password;
+       private $database;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+       public function getConnection(){
+           $conn = new mysqli($this->servername, $this->username, $this->password, $this->database);
+           // Check connection
+           if ($conn->connect_error)
+           {
+               die("Connection failed: " . $conn->connect_error);
+           }
+           return $conn;
+       }
 }
-return $conn;
