@@ -8,8 +8,14 @@ $(document).ready(function() {
         if (username === '' || password === '') {
             $('input[type="text"],input[type="password"]').css("border", "2px solid red");
             $('input[type="text"],input[type="password"]').css("box-shadow", "0 0 3px red");
-            $('#login-div').append('Please enter valid credentials in order to log in.');
 
+            if ($('#blankerror').length) {
+                $("#blankerror").animate({ opacity: 0 }, 200, "linear", function() {
+                    $(this).animate({ opacity: 1 }, 200);
+                });
+            } else {
+                $('#login-div').append('<p id="blankerror">Please enter valid credentials in order to log in.</p>');
+            }
         } else {
             $.ajax({
                 type: "POST",
@@ -41,7 +47,13 @@ $(document).ready(function() {
         if (username === '' || password === '' || email === '') {
             $('input[type="text"],input[type="password"]').css("border", "2px solid red");
             $('input[type="text"],input[type="password"]').css("box-shadow", "0 0 3px red");
-            $('#register-div').append('Please enter valid information in order to register.');
+            if ($('#reg_error').length) {
+                $("#reg_error").animate({ opacity: 0 }, 200, "linear", function() {
+                    $(this).animate({ opacity: 1 }, 200);
+                });
+            } else {
+                $('#register-div').append('<p id="reg_error">Please enter valid credentials in order to log in.</p>');
+            }
 
         } else {
             $.ajax({
@@ -69,38 +81,7 @@ $(document).ready(function() {
         //this is mandatory other wise your from will be submitted.
         return false;
     });
-    $('#login-forma').submit(function() {
-        var username = $("#forma_log_in").val();
-        var password = $("#password").val();
-        if (username === '' || password === '') {
-            $('input[type="text"],input[type="password"]').css("border", "2px solid red");
-            $('input[type="text"],input[type="password"]').css("box-shadow", "0 0 3px red");
-            $('#login-div').append('Please enter valid credentials in order to log in.');
 
-        } else {
-            $.ajax({
-                type: "POST",
-                url: 'RestApi/loginController.php',
-                data: {
-                    username: username,
-                    password: password
-                },
-                success: function(data) {
-                    if (data === '"error"') {
-                        $('#login-div').append('Username or password incorrect.');
-                    } else if (data === '"success"') {
-                        $('#expenses-section').show();
-                        $('#register-div').hide();
-                        $('#login-div').hide();
-                    } else {
-                        $('#login-div').append('Unknown error, please try again.');
-                    }
-                }
-            });
-        }
-        //this is mandatory other wise your from will be submitted.
-        return false;
-    });
 });
 
 function SwitchToRegForm() {

@@ -20,3 +20,30 @@ input[text] {
     text-align: center;
     background-color: dodgerblue;
 }
+
+#login-div {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+h4 {
+    color: dimgray;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+label {
+    padding-left: 0.5rem;
+    color: gray;
+    font-weight: bold;
+}
+
+#login-btn {
+    margin-left: 1rem;
+    width: 40%;
+}
+
+#register-btn {
+    width: 40%;
+    margin-left: 2rem;
+}
