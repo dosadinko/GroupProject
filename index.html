@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <header>
         <img src="AUBIH_logo.png" id="logo" />
     </header>
@@ -18,6 +19,11 @@
     <div class="container">
         <div id="login-div">
             <h4>Log in to Expenses Tracker</h4>
+=======
+    <div class="container-fluid">
+        <div class="" id="login-div">
+            <h2>Log in to Expenses Tracker</h2>
+>>>>>>> 1682c06cdf1d64b1871ebfebd2574c044da48dc6
             <form id="login-forma">
                 <div class="form-group">
                     <label for="Name">Username </label>
@@ -27,7 +33,7 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Enter password">
                 </div>
-                <button id="login-btn" type="submit" class="btn btn-primary">Login</button>
+                <button id="login-btn" class="btn btn-primary">Login</button>
                 <button id="register-btn" type="button" onclick="SwitchToRegForm();" class="btn btn-primary">Register</button>
             </form>
         </div>
@@ -51,11 +57,44 @@
         </div>
 
     </div>
+<<<<<<< HEAD
     <footer>
         <div id="footer">
             <p>All rights reserved | Fenjeri </p>
         </div>
     </footer>
+=======
+    <!-- Expenses tracker screen-->
+    <div class="container" id="expenses-section">
+        <h2>Table</h2>
+        <p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                        <th>City</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Anna</td>
+                        <td>Pitt</td>
+                        <td>35</td>
+                        <td>New York</td>
+                        <td>USA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="logout-btn" class="btn btn-primary" onclick="Logout();">Logout</button>
+    </div>
+>>>>>>> 1682c06cdf1d64b1871ebfebd2574c044da48dc6
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
