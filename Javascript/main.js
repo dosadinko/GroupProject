@@ -19,7 +19,10 @@ $("#login-btn").click(function(e) {
         type: 'POST',
         url: 'RestApi/loginController.php',
         data: { username: username, password: password },
-        success: function(data) {},
+        success: function(data) {
+            $('#expenses-section').show();
+            $('#login-div').hide();
+        },
         error: function() {
             console.log("error");
         }
@@ -44,4 +47,11 @@ $("#register-btn-submit").click(function(e) {
             console.log("error");
         }
     });
+
 })
+
+function Logout() {
+
+    $('#expenses-section').hide();
+    $('#login-div').show();
+}
