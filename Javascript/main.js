@@ -20,12 +20,8 @@ $("#login-btn").click(function(e) {
         url: 'RestApi/loginController.php',
         data: { username: username, password: password },
         success: function(data) {
-<<<<<<< HEAD
             $('#expenses-section').show();
             $('#login-div').hide();
-=======
-            console.log(data)
->>>>>>> fd9dd77a8e1b578ddd0dc3b7eacf1285364395ca
         },
         error: function() {
             console.log("error");
