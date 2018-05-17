@@ -1,7 +1,7 @@
 # Expenses tracker 
 
-This application is tracnikg users personal expences. All information about the transactions are 
-included such as: Description, payee name, amount of money paid, expense date, date paid.  
+This application is tracking users personal expenses. All information about the transactions are
+included such as: Description, payee name, amount of money paid, expense date, date paid.
 
 ## Requirements
 
