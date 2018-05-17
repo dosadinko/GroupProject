@@ -19,6 +19,7 @@ $("#login-btn").click(function(e) {
         url: 'RestApi/loginController.php',
         data: { username: username, password: password },
         success: function(data) {
+            console.log(data)
         },
         error: function() {
             console.log("error");
