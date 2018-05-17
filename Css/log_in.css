@@ -41,9 +41,11 @@ label {
 #login-btn {
     margin-left: 1rem;
     width: 40%;
+    margin-top: 2rem;
 }
 
 #register-btn {
     width: 40%;
     margin-left: 2rem;
+    margin-top: 2rem;
 }
