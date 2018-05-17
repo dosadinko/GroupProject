@@ -11,11 +11,12 @@ function loginCheckByMail($email, $plainPassword){
         if(mysqli_num_rows($result) == 0){
             return 'empty';
         }
-        $id = 0;
+        $id = null;
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
         }
-        return $id;
+        $_SESSION['id'] = $id;
+        return 'success';
 }
 
 function loginCheckByUsername($username, $plainPassword){
@@ -26,9 +27,10 @@ function loginCheckByUsername($username, $plainPassword){
         if(mysqli_num_rows($result) == 0){
             return 'empty';
         }
-        $id = 0;
+        $id = null;
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
         }
-        return $id;
+        $_SESSION['id'] = $id;
+        return 'success';
 }
