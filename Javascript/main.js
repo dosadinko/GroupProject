@@ -51,7 +51,13 @@ $("#register-btn-submit").click(function(e) {
 })
 
 function Logout() {
-
     $('#expenses-section').hide();
     $('#login-div').show();
+    $.ajax({
+        type:'GET',
+        url:'RestApi/logoutController.php',
+        success:function () {
+            console.log('managed to logout');
+        }
+    })
 }
