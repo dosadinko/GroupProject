@@ -8,7 +8,7 @@ $user = loginCheckByMail($username,$password);
 if ($user == 'empty'){
     $user1 = loginCheckByUsername($username,$password);
     if($user1 == 'empty'){
-        echo json_encode(['error' => 'Username/Password wrong']);
+        echo json_encode('error');
         return;
     } else {
         echo json_encode($user1);
