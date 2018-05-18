@@ -1,3 +1,3 @@
 <?php
-$_SESSION['id'] = null;
+session_destroy();
 return;

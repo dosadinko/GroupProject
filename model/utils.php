@@ -15,6 +15,7 @@ function loginCheckByMail($email, $plainPassword){
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
         }
+        session_start();
         $_SESSION['id'] = $id;
         return 'success';
 }
@@ -31,6 +32,7 @@ function loginCheckByUsername($username, $plainPassword){
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
         }
+        session_start();
         $_SESSION['id'] = $id;
         return 'success';
 }
