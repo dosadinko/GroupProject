@@ -93,14 +93,14 @@ $(document).ready(function() {
         //this is mandatory other wise your from will be submitted.
         return false;
     });
-    $('#add-expense-btn').submit(function() {
+    $('#add-expense').submit(function() {
         var description = $("#expense_description").val();
         var payee = $("#expense_payee").val();
         var amount = $("#expense_amount").val();
         var currency = $("#expense_currency").val();
         var expenseDate = $("#expense_date").val();
         var paidDate = $("#expense_paiddate").val();
-        if (description === '' || payee === '' || amount === '' || currency === '' || expensedate === '' || paiddate === '') {
+        if (description === '' || payee === '' || amount === '' || currency === '' || expenseDate === '' || paidDate === '') {
             $('input[type="text"],input[type="date"],input[type="number"]').css("border", "2px solid red");
             $('input[type="text"],input[type="date"],input[type="number"]').css("box-shadow", "0 0 3px red");
             if ($('#addexpense_error').length) {
@@ -108,7 +108,7 @@ $(document).ready(function() {
                     $(this).animate({ opacity: 1 }, 200);
                 });
             } else {
-                $('#expenses').append('<p id="addexpense_error">Please enter valid information to add new expense</p>');
+                $('.popup-overlay.active').append('<p id="addexpense_error">Please enter valid information to add new expense</p>');
             }
 
         } else {
@@ -117,7 +117,7 @@ $(document).ready(function() {
                 url: 'RestApi/createExpenceController.php',
                 data: {
                     description: description,
-                    expenceDate: expensedate,
+                    expenceDate: expenseDate,
                     payedDate: paidDate,
                     currencyType: currency,
                     payee: payee,
