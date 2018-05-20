@@ -175,8 +175,10 @@ $('#add-expense-btn').click(function() {
     var payee = $("#expense_payee").val();
     var amount = $("#expense_amount").val();
     var currency = $("#expense_currency").val();
-    var expenseDate = $("#expense_date").val();
-    var paidDate = $("#expense_paiddate").val();
+    var date = new Date($("#expense_date").val());
+    var expenseDate = date.valueOf();
+    var date2 = new Date($('#expense_paiddate').val());
+    var paidDate = date2.valueOf();
 
     $.ajax({
         type: "POST",
@@ -189,12 +191,7 @@ $('#add-expense-btn').click(function() {
             payee: payee,
             amountPayed: amount
         },
-        success: function(result) {
-            $('.modal-box').text(result).fadeIn(700, function() {
-                setTimeout(function() {
-                    $('.modal-box').fadeOut();
-                }, 2000);
-            });
-        }
+
+
     });
 });
