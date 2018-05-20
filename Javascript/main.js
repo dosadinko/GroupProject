@@ -38,12 +38,20 @@ $(document).ready(function() {
                         $('#register-div').hide();
                         $('#login-div').hide();
                         $.ajax({
+<<<<<<< HEAD
                             type:'GET',
                             url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
                             success:function (data) {
                                 console.log(data);
+=======
+                            type: 'GET',
+                            url: 'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
+                            success: function(data) {
+                                var obj = JSON.parse(data);
+                                console.log(obj);
+>>>>>>> 93e93b7b01615dc697a82ec007187adb6b2bbbf2
                             },
-                            error:function () {
+                            error: function() {
                                 console.log('error');
                             }
                         });
@@ -152,10 +160,13 @@ $('#add-expense-btn').click(function() {
             payedDate: paidDate,
             currencyType: currency,
             payee: payee,
-            amountPayed: amount
+            amountPayed: amount,
         },
         success: function(result) {
-
+            //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+            $(".close").on("click", function() {
+                $(".popup-overlay, .popup-content").removeClass("active");
+            });
         }
 
     });
