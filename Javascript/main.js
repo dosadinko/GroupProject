@@ -184,9 +184,9 @@ $('#add-expense-btn').click(function() {
     var amount = $("#expense_amount").val();
     var currency = $("#expense_currency").val();
     var date = new Date($("#expense_date").val());
-    var expenseDate = parseInt(date.valueOf(), 10);
+    var expenseDate = date.valueOf();
     var dateTwo = new Date($('#expense_paiddate').val());
-    var paidDate = parseInt(dateTwo.valueOf(), 10);
+    var paidDate = dateTwo.valueOf();
 
     $.ajax({
         type: "POST",
