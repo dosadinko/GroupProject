@@ -93,7 +93,7 @@ $(document).ready(function() {
         //this is mandatory other wise your from will be submitted.
         return false;
     });
-    $('#add-expense-btn').submit(function() {
+    $('#add-expense').submit(function() {
         var description = $("#expense_description").val();
         var payee = $("#expense_payee").val();
         var amount = $("#expense_amount").val();
@@ -108,7 +108,7 @@ $(document).ready(function() {
                     $(this).animate({ opacity: 1 }, 200);
                 });
             } else {
-                $('#expenses').append('<p id="addexpense_error">Please enter valid information to add new expense</p>');
+                $('.popup-overlay.active').append('<p id="addexpense_error">Please enter valid information to add new expense</p>');
             }
 
         } else {
