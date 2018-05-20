@@ -51,10 +51,11 @@ $(document).ready(function() {
                                     var monthIndex = date.getMonth();
                                     var year = date.getFullYear();
                                     var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                                    var deleteId = obj.expence[i].id;
                                     $("#root-table").prepend(`
                                     <tbody>
                                     <tr>
-                                        <td id="td` + [i] + `">#</td>
+                                        <td id="td` + [i] + `">${obj.expence[i].id}</td>
                                         <td>${obj.expence[i].description}</td>
                                         <td>${obj.expence[i].payee}</td>
                                         <td>${obj.expence[i].amountPayed}</td>
@@ -72,26 +73,7 @@ $(document).ready(function() {
                                                 <div class="modal-content">
                             
                                                     <div class="modal-body">
-                                                        <h4>Add New Expense</h4>
-                                                        <form id="add-expense">
-                                                            <div class="form-group">
-                                                                <label for="Description">Description</label>
-                                                                <input type="text" class="form-control" id="expense_description" aria-describedby="expense_description" placeholder="Type in Description">
-                                                                <label for="payee">Expense by:</label>
-                                                                <input type="text" class="form-control" id="expense_payee" aria-describedby="expense_payee" placeholder="Enter who made the expense">
-                                                                <label for="amount">Amount</label>
-                                                                <input type="number" class="form-control" id="expense_amount" aria-describedby="expense_amount" placeholder="Amount">
-                                                                <label for="currency">Currency</label>
-                                                                <input type="text" class="form-control" id="expense_currency" aria-describedby="expense_currency" placeholder="Currency">
-                                                                <label for="expensedate">Expense Date</label>
-                                                                <input type="date" class="form-control" id="expense_date" aria-describedby="expense_date" placeholder="Choose Date">
-                                                                <label for="paiddate">Paid Date</label>
-                                                                <input type="date" class="form-control" id="expense_paiddate" aria-describedby="expense_paiddate" placeholder="Choose Date">
-                                                            </div>
-                            
-                                                        </form>
-                                                        <!--popup's close button-->
-                                                        <button id="add-expense-btn" type="submit" class="close btn btn-primary">Add</button>
+                                                       
                                                     </div>
                             
                                                 </div>
@@ -99,7 +81,7 @@ $(document).ready(function() {
                                             </div>
                                         </div></td>
                                         <td>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
                                         </td>
                                     </tr>
                                     </tbody>`);
@@ -234,10 +216,11 @@ $('#add-expense-btn').click(function() {
                         var monthIndex = date.getMonth();
                         var year = date.getFullYear();
                         var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                        var deleteId = obj.expence[i].id;
                         $("#root-table").prepend(`
                             <tbody>
                             <tr>
-                                <td id="td` + [i] + `">#</td>
+                                <td id="td` + [i] + `">${obj.expence[i].id}</td>
                                 <td>${obj.expence[i].description}</td>
                                 <td>${obj.expence[i].payee}</td>
                                 <td>${obj.expence[i].amountPayed}</td>
@@ -265,7 +248,7 @@ $('#add-expense-btn').click(function() {
                                     </div>
                                 </div></td>
                                 <td>
-                                <button type="button" class="btn btn-danger" onclick="DeleteExpense($('#td` + [i] + `').val());">Delete</button>
+                                <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
                                 </td>
                             </tr>
                             </tbody>`);
@@ -281,3 +264,94 @@ $('#add-expense-btn').click(function() {
 
     });
 });
+
+function DeleteExpense(id) {
+
+
+    $.ajax({
+        type: "POST",
+        url: 'RestApi/deleteExpenceController.php',
+        data: {
+            id: id
+        },
+        success: function(data) {
+            if (data === '"error"') {
+                if ($('#inputerror').length) {
+                    $("#inputerror").animate({ opacity: 0 }, 200, "linear", function() {
+                        $(this).animate({ opacity: 1 }, 200);
+                    });
+                } else {
+                    $('#login-div').append('<p id="inputerror">Username or password incorrect.</p>');
+                }
+            } else if (data === '"success"') {
+                $('#expenses-section').show();
+                $('#register-div').hide();
+                $('#login-div').hide();
+                $.ajax({
+
+                    type: 'GET',
+                    url: 'RestApi/getAllExpencesController.php',
+                    success: function(data) {
+                        var obj = JSON.parse(data);
+                        var i = 0;
+                        $('#root-table').html("");
+                        obj.expence.forEach(function() {
+                            var date = new Date(obj.expence[i].expenceDate * 1000);
+                            var day = date.getDate();
+                            var monthIndex = date.getMonth();
+                            var year = date.getFullYear();
+                            var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                            var deleteId = obj.expence[i].id;
+                            $("#root-table").prepend(`
+                            <tbody>
+                            <tr>
+                                <td id="td` + [i] + `">${obj.expence[i].id}</td>
+                                <td>${obj.expence[i].description}</td>
+                                <td>${obj.expence[i].payee}</td>
+                                <td>${obj.expence[i].amountPayed}</td>
+                                <td>${obj.expence[i].currencyType}</td>
+                                <td>${formattedTime}</td>
+                                <td>${obj.expence[i].payedDate}</td>
+                                <td>            <!-- Trigger the modal with a button -->
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button>
+                    
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                    
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                    
+                                            <div class="modal-body">
+                                               
+                                            </div>
+                    
+                                        </div>
+                    
+                                    </div>
+                                </div></td>
+                                <td>
+                                <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>`);
+                            i++;
+                        })
+                    },
+                    error: function() {
+                        console.log('error');
+                    }
+                });
+            } else {
+                if ($('#unknownerror').length) {
+                    $("#unknownerror").animate({ opacity: 0 }, 200, "linear", function() {
+                        $(this).animate({ opacity: 1 }, 200);
+                    });
+                } else {
+                    $('#login-div').append('<p id="unknownerror">Unknown error, please try again.</p>');
+                }
+            }
+        }
+    });
+
+}
