@@ -64,8 +64,3 @@ function deleteExpenceById($id){
     $result = mysqli_query($connection, $query);
     return $result;
 }
-
-/*
-function updateExpence(){
-
-}

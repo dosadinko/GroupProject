@@ -26,13 +26,25 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     if (data === '"error"') {
-                        $('#login-div').append('Username or password incorrect.');
+                        if ($('#inputerror').length) {
+                            $("#inputerror").animate({ opacity: 0 }, 200, "linear", function() {
+                                $(this).animate({ opacity: 1 }, 200);
+                            });
+                        } else {
+                            $('#login-div').append('<p id="inputerror">Username or password incorrect.</p>');
+                        }
                     } else if (data === '"success"') {
                         $('#expenses-section').show();
                         $('#register-div').hide();
                         $('#login-div').hide();
                     } else {
-                        $('#login-div').append('Unknown error, please try again.');
+                        if ($('#unknownerror').length) {
+                            $("#unknownerror").animate({ opacity: 0 }, 200, "linear", function() {
+                                $(this).animate({ opacity: 1 }, 200);
+                            });
+                        } else {
+                            $('#login-div').append('<p id="unknownerror">Unknown error, please try again.</p>');
+                        }
                     }
                 }
             });
@@ -90,7 +102,13 @@ function SwitchToRegForm() {
 }
 
 function Logout() {
-
+    $(function() {
+        $('#logout-btn').on('click', function() {
+            $.ajax({
+                url: 'RestApi/logoutController.php'
+            });
+        });
+    });
     location.reload();
 
 }
