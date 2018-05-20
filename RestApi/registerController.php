@@ -22,6 +22,10 @@ if(0 == preg_match('~[0-9]~', $password)){
     return;
 }
 
+if(checkEmailsInDb($email) == true){
+    echo json_encode('Email already in use');
+    return;
+}
 
 $query = "insert into accounts(email, password, username) values('$email', '$safePassword', '$username')";
 $result = mysqli_query($connection, $query);
