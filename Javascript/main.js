@@ -202,9 +202,9 @@ $('#add-expense-btn').click(function() {
     var amount = $("#expense_amount").val();
     var currency = $("#expense_currency").val();
     var date = new Date($("#expense_date").val());
-    var expenseDate = date.valueOf();
+    var expenseDate = parseInt(date.valueOf(), 10);
     var dateTwo = new Date($('#expense_paiddate').val());
-    var paidDate = dateTwo.valueOf();
+    var paidDate = parseInt(dateTwo.valueOf(), 10);
 
     $.ajax({
         type: "POST",
@@ -237,7 +237,7 @@ $('#add-expense-btn').click(function() {
                         $("#root-table").prepend(`
                             <tbody>
                             <tr>
-                                <td>#</td>
+                                <td id="td` + [i] + `">#</td>
                                 <td>${obj.expence[i].description}</td>
                                 <td>${obj.expence[i].payee}</td>
                                 <td>${obj.expence[i].amountPayed}</td>
