@@ -39,31 +39,72 @@ $(document).ready(function() {
                         $('#login-div').hide();
                         $.ajax({
 
-                            type:'GET',
-                            url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
-                            success:function (data) {
+                            type: 'GET',
+                            url: 'RestApi/getAllExpencesController.php',
+                            success: function(data) {
                                 var obj = JSON.parse(data);
                                 var i = 0;
-                                obj.expence.forEach(function () {
-                                    var date = new Date(obj.expence[i].expenceDate*1000);
+                                obj.expence.forEach(function() {
+                                    var date = new Date(obj.expence[i].expenceDate * 1000);
                                     var day = date.getDate();
                                     var monthIndex = date.getMonth();
                                     var year = date.getFullYear();
-                                    var formattedTime = day + ' ' + monthIndex+1 + ' ' + year;
+                                    var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
                                     $("#root-table").prepend(`
                                     <tbody>
                                     <tr>
+                                        <td>#</td>
                                         <td>${obj.expence[i].description}</td>
                                         <td>${obj.expence[i].payee}</td>
                                         <td>${obj.expence[i].amountPayed}</td>
                                         <td>${obj.expence[i].currencyType}</td>
                                         <td>${formattedTime}</td>
                                         <td>${obj.expence[i].payedDate}</td>
+                                        <td>            <!-- Trigger the modal with a button -->
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button>
+                            
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" role="dialog">
+                                            <div class="modal-dialog">
+                            
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                            
+                                                    <div class="modal-body">
+                                                        <h4>Add New Expense</h4>
+                                                        <form id="add-expense">
+                                                            <div class="form-group">
+                                                                <label for="Description">Description</label>
+                                                                <input type="text" class="form-control" id="expense_description" aria-describedby="expense_description" placeholder="Type in Description">
+                                                                <label for="payee">Expense by:</label>
+                                                                <input type="text" class="form-control" id="expense_payee" aria-describedby="expense_payee" placeholder="Enter who made the expense">
+                                                                <label for="amount">Amount</label>
+                                                                <input type="number" class="form-control" id="expense_amount" aria-describedby="expense_amount" placeholder="Amount">
+                                                                <label for="currency">Currency</label>
+                                                                <input type="text" class="form-control" id="expense_currency" aria-describedby="expense_currency" placeholder="Currency">
+                                                                <label for="expensedate">Expense Date</label>
+                                                                <input type="date" class="form-control" id="expense_date" aria-describedby="expense_date" placeholder="Choose Date">
+                                                                <label for="paiddate">Paid Date</label>
+                                                                <input type="date" class="form-control" id="expense_paiddate" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                                            </div>
+                            
+                                                        </form>
+                                                        <!--popup's close button-->
+                                                        <button id="add-expense-btn" type="submit" class="close btn btn-primary">Add</button>
+                                                    </div>
+                            
+                                                </div>
+                            
+                                            </div>
+                                        </div></td>
+                                        <td>
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        </td>
                                     </tr>
                                     </tbody>`);
                                     i++;
                                 })
-                                },
+                            },
                             error: function() {
                                 console.log('error');
                             }
@@ -161,8 +202,8 @@ $('#add-expense-btn').click(function() {
     var currency = $("#expense_currency").val();
     var date = new Date($("#expense_date").val());
     var expenseDate = date.valueOf();
-    var date2 = new Date($('#expense_paiddate').val());
-    var paidDate = date2.valueOf();
+    var dateTwo = new Date($('#expense_paiddate').val());
+    var paidDate = dateTwo.valueOf();
 
     $.ajax({
         type: "POST",
@@ -175,10 +216,82 @@ $('#add-expense-btn').click(function() {
             payee: payee,
             amountPayed: amount,
         },
-        success: function(result) {
+        success: function(data) {
             //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
             $(".close").on("click", function() {
                 $(".popup-overlay, .popup-content").removeClass("active");
+                $.ajax({
+
+                    type: 'GET',
+                    url: 'RestApi/getAllExpencesController.php',
+                    success: function(data) {
+                        var obj = JSON.parse(data);
+                        var i = 0;
+                        obj.expence.forEach(function() {
+                            var date = new Date(obj.expence[i].expenceDate * 1000);
+                            var day = date.getDate();
+                            var monthIndex = date.getMonth();
+                            var year = date.getFullYear();
+                            var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                            $("#root-table").prepend(`
+                            <tbody>
+                            <tr>
+                                <td>#</td>
+                                <td>${obj.expence[i].description}</td>
+                                <td>${obj.expence[i].payee}</td>
+                                <td>${obj.expence[i].amountPayed}</td>
+                                <td>${obj.expence[i].currencyType}</td>
+                                <td>${formattedTime}</td>
+                                <td>${obj.expence[i].payedDate}</td>
+                                <td>            <!-- Trigger the modal with a button -->
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button>
+                    
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                    
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                    
+                                            <div class="modal-body">
+                                                <h4>Add New Expense</h4>
+                                                <form id="add-expense">
+                                                    <div class="form-group">
+                                                        <label for="Description">Description</label>
+                                                        <input type="text" class="form-control" id="expense_description" aria-describedby="expense_description" placeholder="Type in Description">
+                                                        <label for="payee">Expense by:</label>
+                                                        <input type="text" class="form-control" id="expense_payee" aria-describedby="expense_payee" placeholder="Enter who made the expense">
+                                                        <label for="amount">Amount</label>
+                                                        <input type="number" class="form-control" id="expense_amount" aria-describedby="expense_amount" placeholder="Amount">
+                                                        <label for="currency">Currency</label>
+                                                        <input type="text" class="form-control" id="expense_currency" aria-describedby="expense_currency" placeholder="Currency">
+                                                        <label for="expensedate">Expense Date</label>
+                                                        <input type="date" class="form-control" id="expense_date" aria-describedby="expense_date" placeholder="Choose Date">
+                                                        <label for="paiddate">Paid Date</label>
+                                                        <input type="date" class="form-control" id="expense_paiddate" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                                    </div>
+                    
+                                                </form>
+                                                <!--popup's close button-->
+                                                <button id="add-expense-btn" type="submit" class="close btn btn-primary">Add</button>
+                                            </div>
+                    
+                                        </div>
+                    
+                                    </div>
+                                </div></td>
+                                <td>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>`);
+                            i++;
+                        })
+                    },
+                    error: function() {
+                        console.log('error');
+                    }
+                });
             });
         }
 

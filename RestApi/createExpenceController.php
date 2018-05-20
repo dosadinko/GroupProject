@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();}
 if ($_SESSION['id'] < 1 || $_SESSION == null){
     echo json_encode('authentication failed');
     return;
@@ -16,4 +17,4 @@ $currencyType = $_POST['currencyType'];
 $accountId = $_SESSION['id'];
 
 $result = createExpence($description, $payee, $amountPayed, $currencyType, $expenceDate, $payedDate, $accountId);
-echo json_encode('success');
+echo json_encode($result);

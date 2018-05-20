@@ -58,46 +58,60 @@
         <h2>Expenses list for
             <!--load username  -->Username</h2>
         <div id="crud">
-            <!--Creates the popup body-->
-            <div class="popup-overlay">
-                <!--Creates the popup content-->
-                <div class="popup-content popup-expense" id="expenses">
-                    <h4>Add New Expense</h4>
-                    <form id="add-expense">
-                        <div class="form-group">
-                            <label for="Description">Description</label>
-                            <input type="text" class="form-control" id="expense_description" aria-describedby="expense_description" placeholder="Type in Description">
-                            <label for="payee">Expense by:</label>
-                            <input type="text" class="form-control" id="expense_payee" aria-describedby="expense_payee" placeholder="Enter who made the expense">
-                            <label for="amount">Amount</label>
-                            <input type="number" class="form-control" id="expense_amount" aria-describedby="expense_amount" placeholder="Amount">
-                            <label for="currency">Currency</label>
-                            <input type="text" class="form-control" id="expense_currency" aria-describedby="expense_currency" placeholder="Currency">
-                            <label for="expensedate">Expense Date</label>
-                            <input type="date" class="form-control" id="expense_date" aria-describedby="expense_date" placeholder="Choose Date">
-                            <label for="paiddate">Paid Date</label>
-                            <input type="date" class="form-control" id="expense_paiddate" aria-describedby="expense_paiddate" placeholder="Choose Date">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary navig" data-toggle="modal" data-target="#myModal">Add Expense</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            <h4>Add New Expense</h4>
+                            <form id="add-expense">
+                                <div class="form-group">
+                                    <label for="Description">Description</label>
+                                    <input type="text" class="form-control" id="expense_description" aria-describedby="expense_description" placeholder="Type in Description">
+                                    <label for="payee">Expense by:</label>
+                                    <input type="text" class="form-control" id="expense_payee" aria-describedby="expense_payee" placeholder="Enter who made the expense">
+                                    <label for="amount">Amount</label>
+                                    <input type="number" class="form-control" id="expense_amount" aria-describedby="expense_amount" placeholder="Amount">
+                                    <label for="currency">Currency</label>
+                                    <input type="text" class="form-control" id="expense_currency" aria-describedby="expense_currency" placeholder="Currency">
+                                    <label for="expensedate">Expense Date</label>
+                                    <input type="date" class="form-control" id="expense_date" aria-describedby="expense_date" placeholder="Choose Date">
+                                    <label for="paiddate">Paid Date</label>
+                                    <input type="date" class="form-control" id="expense_paiddate" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                </div>
+
+                            </form>
+                            <!--popup's close button-->
+                            <button id="add-expense-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add</button>
+
                         </div>
 
-                    </form>
-                    <!--popup's close button-->
-                    <button id="add-expense-btn" type="submit" class="close btn btn-primary">Add</button>
+                    </div>
+
                 </div>
             </div>
-            <!--Content shown when popup is not displayed-->
-            <button class="open btn btn-primary">Add Expense</button>
         </div>
         <div class="table-responsive">
-            <table id='root-table' class="table">
+            <table id="root-table" class="table">
                 <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>The Guy</th>
-                    <th>Amount Payed</th>
-                    <th>Currency</th>
-                    <th>Expence Date</th>
-                    <th>Payed Date</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Description</th>
+                        <th>The Guy</th>
+                        <th>Amount Payed</th>
+                        <th>Currency</th>
+                        <th>Expence Date</th>
+                        <th>Payed Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
                 </thead>
             </table>
         </div>
