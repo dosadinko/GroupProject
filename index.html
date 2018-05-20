@@ -88,27 +88,17 @@
             <button class="open btn btn-primary">Add Expense</button>
         </div>
         <div class="table-responsive">
-            <table class="table">
+            <table id='root-table' class="table">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                        <th>City</th>
-                        <th>Country</th>
-                    </tr>
+                <tr>
+                    <th>Description</th>
+                    <th>The Guy</th>
+                    <th>Amount Payed</th>
+                    <th>Currency</th>
+                    <th>Expence Date</th>
+                    <th>Payed Date</th>
+                </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Anna</td>
-                        <td>Pitt</td>
-                        <td>35</td>
-                        <td>New York</td>
-                        <td>USA</td>
-                    </tr>
-                </tbody>
             </table>
         </div>
         <button id="logout-btn" type="submit" onclick="Logout();" class="btn btn-primary">Logout</button>

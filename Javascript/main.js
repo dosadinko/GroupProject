@@ -43,8 +43,21 @@ $(document).ready(function() {
                             url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
                             success:function (data) {
                                 var obj = JSON.parse(data);
+                                var i = 0;
                                 obj.expence.forEach(function () {
-                                    console.log(obj.expence.description)
+                                    console.log(obj.expence[i].description, obj.expence[i].payee, obj.expence[i].amountPayed);
+                                    $("#root-table").prepend(`
+                                    <tbody>
+                                    <tr>
+                                        <td>${obj.expence[i].description}</td>
+                                        <td>${obj.expence[i].payee}</td>
+                                        <td>${obj.expence[i].amountPayed}</td>
+                                        <td>${obj.expence[i].currencyType}</td>
+                                        <td>${obj.expence[i].expenceDate}</td>
+                                        <td>${obj.expence[i].payedDate}</td>
+                                    </tr>
+                                    </tbody>`);
+                                    i++;
                                 })
                                 },
                             error: function() {
