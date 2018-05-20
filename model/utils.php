@@ -40,7 +40,7 @@ function loginCheckByUsername($username, $plainPassword){
 
 function createExpence($description, $payee, $amountPayed, $currencyType, $expenceDate, $payedDate, $accountId){
     $connection = getConnection();
-    $query = "INSERT INTO expences(description, payee, amount_payed, currency_type, expence_date, payed_date, account_id) values('$description', '$payee', $amountPayed, '$currencyType', $expenceDate, $payedDate, $accountId)";
+    $query = "INSERT INTO expences (id, description, payee, amount_payed, currency_type, expence_date, payed_date, account_id) VALUES (NULL, '$description' , '$payee', $amountPayed, '$currencyType', $expenceDate, $payedDate, $accountId)";
     $result = mysqli_query($connection, $query);
     return $result;
 }

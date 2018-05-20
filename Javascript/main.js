@@ -44,6 +44,7 @@ $(document).ready(function() {
                             success: function(data) {
                                 var obj = JSON.parse(data);
                                 var i = 0;
+                                $('#root-table').html("");
                                 obj.expence.forEach(function() {
                                     var date = new Date(obj.expence[i].expenceDate * 1000);
                                     var day = date.getDate();
@@ -218,22 +219,22 @@ $('#add-expense-btn').click(function() {
         },
         success: function(data) {
             //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
-            $(".close").on("click", function() {
-                $(".popup-overlay, .popup-content").removeClass("active");
-                $.ajax({
 
-                    type: 'GET',
-                    url: 'RestApi/getAllExpencesController.php',
-                    success: function(data) {
-                        var obj = JSON.parse(data);
-                        var i = 0;
-                        obj.expence.forEach(function() {
-                            var date = new Date(obj.expence[i].expenceDate * 1000);
-                            var day = date.getDate();
-                            var monthIndex = date.getMonth();
-                            var year = date.getFullYear();
-                            var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
-                            $("#root-table").prepend(`
+            $.ajax({
+
+                type: 'GET',
+                url: 'RestApi/getAllExpencesController.php',
+                success: function(data) {
+                    var obj = JSON.parse(data);
+                    var i = 0;
+                    $("#root-table").html("");
+                    obj.expence.forEach(function() {
+                        var date = new Date(obj.expence[i].expenceDate * 1000);
+                        var day = date.getDate();
+                        var monthIndex = date.getMonth();
+                        var year = date.getFullYear();
+                        var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                        $("#root-table").prepend(`
                             <tbody>
                             <tr>
                                 <td>#</td>
@@ -285,14 +286,14 @@ $('#add-expense-btn').click(function() {
                                 </td>
                             </tr>
                             </tbody>`);
-                            i++;
-                        })
-                    },
-                    error: function() {
-                        console.log('error');
-                    }
-                });
+                        i++;
+                    })
+                },
+                error: function() {
+                    console.log('error');
+                }
             });
+
         }
 
     });
