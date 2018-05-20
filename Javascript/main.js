@@ -100,7 +100,7 @@ $(document).ready(function() {
         var currency = $("#expense_currency").val();
         var expenseDate = $("#expense_date").val();
         var paidDate = $("#expense_paiddate").val();
-        if (description === '' || payee === '' || amount === '' || currency === '' || expensedate === '' || paiddate === '') {
+        if (description === '' || payee === '' || amount === '' || currency === '' || expenseDate === '' || paidDate === '') {
             $('input[type="text"],input[type="date"],input[type="number"]').css("border", "2px solid red");
             $('input[type="text"],input[type="date"],input[type="number"]').css("box-shadow", "0 0 3px red");
             if ($('#addexpense_error').length) {
@@ -117,7 +117,7 @@ $(document).ready(function() {
                 url: 'RestApi/createExpenceController.php',
                 data: {
                     description: description,
-                    expenceDate: expensedate,
+                    expenceDate: expenseDate,
                     payedDate: paidDate,
                     currencyType: currency,
                     payee: payee,
