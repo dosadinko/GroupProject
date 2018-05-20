@@ -66,3 +66,12 @@ function deleteExpenceById($id){
     return $result;
 }
 
+function updateExpence($id, $description, $payee, $amountPayed, $currencyType, $expenceDate, $payedDate){
+    $connection = getConnection();
+    $query = "update expences set description='$description', payee='$payee', amount_payed=$amountPayed, currency_type='$currencyType', expence_date=$expenceDate, payed_date=$payedDate where id=$id";
+    $result = mysqli_query($connection, $query);
+    if(!$result){
+        die(mysqli_error($connection));
+    }
+    return $result;
+}
