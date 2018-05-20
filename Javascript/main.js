@@ -43,8 +43,8 @@ $(document).ready(function() {
                             url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
                             success:function (data) {
                                 var obj = JSON.parse(data);
-                                obj.forEach(function () {
-                                    console.log("radi");
+                                obj.expence.forEach(function () {
+                                    console.log(obj.expence.description)
                                 })
                                 },
                             error: function() {
