@@ -45,7 +45,11 @@ $(document).ready(function() {
                                 var obj = JSON.parse(data);
                                 var i = 0;
                                 obj.expence.forEach(function () {
-                                    console.log(obj.expence[i].description, obj.expence[i].payee, obj.expence[i].amountPayed);
+                                    var date = new Date(obj.expence[i].expenceDate*1000);
+                                    var day = date.getDate();
+                                    var monthIndex = date.getMonth();
+                                    var year = date.getFullYear();
+                                    var formattedTime = day + ' ' + monthIndex+1 + ' ' + year;
                                     $("#root-table").prepend(`
                                     <tbody>
                                     <tr>
@@ -53,7 +57,7 @@ $(document).ready(function() {
                                         <td>${obj.expence[i].payee}</td>
                                         <td>${obj.expence[i].amountPayed}</td>
                                         <td>${obj.expence[i].currencyType}</td>
-                                        <td>${obj.expence[i].expenceDate}</td>
+                                        <td>${formattedTime}</td>
                                         <td>${obj.expence[i].payedDate}</td>
                                     </tr>
                                     </tbody>`);
