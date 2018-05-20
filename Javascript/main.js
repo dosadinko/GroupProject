@@ -41,7 +41,8 @@ $(document).ready(function() {
                             type:'GET',
                             url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
                             success:function (data) {
-                                console.log(JSON.parse(data));
+                                var obj = JSON.parse(data);
+                                console.log(obj);
                             },
                             error:function () {
                                 console.log('error');
