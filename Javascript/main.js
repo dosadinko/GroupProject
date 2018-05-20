@@ -63,17 +63,17 @@ $(document).ready(function() {
                                         <td>${formattedTime}</td>
                                         <td>${obj.expence[i].payedDate}</td>
                                         <td>            <!-- Trigger the modal with a button -->
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button>
-                            
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `">Edit</button>
+                    
                                         <!-- Modal -->
-                                        <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
                                             <div class="modal-dialog">
                             
                                                 <!-- Modal content-->
                                                 <div class="modal-content">
                             
                                                     <div class="modal-body">
-                                                       
+                                                    <button type="submit" class="btn btn-success">Save</button>
                                                     </div>
                             
                                                 </div>
@@ -228,10 +228,10 @@ $('#add-expense-btn').click(function() {
                                 <td>${formattedTime}</td>
                                 <td>${obj.expence[i].payedDate}</td>
                                 <td>            <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `">Edit</button>
                     
                                 <!-- Modal -->
-                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                     
                                         <!-- Modal content-->
@@ -239,8 +239,7 @@ $('#add-expense-btn').click(function() {
                     
                                             <div class="modal-body">
                              
-                                                <!--popup's close button-->
-                                                <button id="add-expense-btn" type="submit" class="close btn btn-primary">Save</button>
+                                            <button type="submit" class="btn btn-success">Save</button>
                                             </div>
                     
                                         </div>
@@ -313,17 +312,17 @@ function DeleteExpense(id) {
                                 <td>${formattedTime}</td>
                                 <td>${obj.expence[i].payedDate}</td>
                                 <td>            <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `">Edit</button>
                     
                                 <!-- Modal -->
-                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                     
                                         <!-- Modal content-->
                                         <div class="modal-content">
                     
                                             <div class="modal-body">
-                                               
+                                            <button type="submit" class="btn btn-success">Save</button>
                                             </div>
                     
                                         </div>
