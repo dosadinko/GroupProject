@@ -8,7 +8,7 @@ if ($_SESSION['id'] < 1 || $_SESSION == null){
 require_once '../model/utils.php';
 
 $result = getExpencesByUserId($_SESSION['id']);
-$out = [];
+$out = ['expence' => []];
 
 while($row = mysqli_fetch_assoc($result)){
     $expence = [];
@@ -19,7 +19,7 @@ while($row = mysqli_fetch_assoc($result)){
     $expence['expenceDate'] = $row['expence_date'];
     $expence['payedDate'] = $row['payed_date'];
     $expence['accountId'] = $row['account_id'];
-    array_push($out, $expence);
+    array_push($out['expence'], $expence);
 }
 
 echo json_encode($out);

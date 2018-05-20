@@ -37,6 +37,16 @@ $(document).ready(function() {
                         $('#expenses-section').show();
                         $('#register-div').hide();
                         $('#login-div').hide();
+                        $.ajax({
+                            type:'GET',
+                            url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
+                            success:function (data) {
+                                console.log(JSON.parse(data));
+                            },
+                            error:function () {
+                                console.log('error');
+                            }
+                        });
                     } else {
                         if ($('#unknownerror').length) {
                             $("#unknownerror").animate({ opacity: 0 }, 200, "linear", function() {

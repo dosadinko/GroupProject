@@ -64,13 +64,3 @@ function deleteExpenceById($id){
     return $result;
 }
 
-function checkEmailsInDb($email){
-    $connection = getConnection();
-    $query = "select * from accounts where email='$email'";
-    $result = mysqli_query($connection, $query);
-    if(mysqli_num_rows($result) == 0){
-        return false;
-    } else {
-        return true;
-    }
-}
