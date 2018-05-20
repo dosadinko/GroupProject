@@ -93,7 +93,54 @@ $(document).ready(function() {
         //this is mandatory other wise your from will be submitted.
         return false;
     });
+    $('#add-expense-btn').submit(function() {
+        var description = $("#expense_description").val();
+        var payee = $("#expense_payee").val();
+        var amount = $("#expense_amount").val();
+        var currency = $("#expense_currency").val();
+        var expenseDate = $("#expense_date").val();
+        var paidDate = $("#expense_paiddate").val();
+        if (description === '' || payee === '' || amount === '' || currency === '' || expensedate === '' || paiddate === '') {
+            $('input[type="text"],input[type="date"],input[type="number"]').css("border", "2px solid red");
+            $('input[type="text"],input[type="date"],input[type="number"]').css("box-shadow", "0 0 3px red");
+            if ($('#addexpense_error').length) {
+                $("#addexpense_error").animate({ opacity: 0 }, 200, "linear", function() {
+                    $(this).animate({ opacity: 1 }, 200);
+                });
+            } else {
+                $('#expenses').append('<p id="addexpense_error">Please enter valid information to add new expense</p>');
+            }
 
+        } else {
+            $.ajax({
+                type: "POST",
+                url: 'RestApi/createExpenceController.php',
+                data: {
+                    description: description,
+                    expenceDate: expensedate,
+                    payedDate: paidDate,
+                    currencyType: currency,
+                    payee: payee,
+                    amountPayed: amount
+                },
+                success: function(data) {
+                    if (data === '"error"') {
+                        $('.popup-expense').append('Registration data is incorrect.');
+                    } else if (data === '"success"') {
+                        $('.popup-expense').append('Registration is successful. You will be redirected to login screen.');
+                        $('.popup-expense').slideUp(300).delay(10000).fadeOut(400);
+                        $(".close").on("click", function() {
+                            $(".popup-overlay, .popup-content").removeClass("active");
+                        });
+                    } else {
+                        $('.popup-expense').append('Unknown error, please try again.');
+                    }
+                }
+            });
+        }
+        //this is mandatory other wise your from will be submitted.
+        return false;
+    });
 });
 
 function SwitchToRegForm() {
@@ -112,3 +159,12 @@ function Logout() {
     location.reload();
 
 }
+//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+$(".open").on("click", function() {
+    $(".popup-overlay, .popup-content").addClass("active");
+});
+
+//removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+/*$(".close").on("click", function() {
+    $(".popup-overlay, .popup-content").removeClass("active");
+});*/
