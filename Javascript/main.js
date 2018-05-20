@@ -38,13 +38,13 @@ $(document).ready(function() {
                         $('#register-div').hide();
                         $('#login-div').hide();
                         $.ajax({
-                            type:'GET',
-                            url:'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
-                            success:function (data) {
+                            type: 'GET',
+                            url: 'http://localhost/GroupProject/GroupProject/RestApi/getAllExpencesController.php',
+                            success: function(data) {
                                 var obj = JSON.parse(data);
                                 console.log(obj);
                             },
-                            error:function () {
+                            error: function() {
                                 console.log('error');
                             }
                         });
@@ -153,10 +153,13 @@ $('#add-expense-btn').click(function() {
             payedDate: paidDate,
             currencyType: currency,
             payee: payee,
-            amountPayed: amount
+            amountPayed: amount,
         },
         success: function(result) {
-
+            //removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+            $(".close").on("click", function() {
+                $(".popup-overlay, .popup-content").removeClass("active");
+            });
         }
 
     });
