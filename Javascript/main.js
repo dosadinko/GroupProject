@@ -54,7 +54,7 @@ $(document).ready(function() {
                                     $("#root-table").prepend(`
                                     <tbody>
                                     <tr>
-                                        <td>#</td>
+                                        <td id="td` + [i] + `">#</td>
                                         <td>${obj.expence[i].description}</td>
                                         <td>${obj.expence[i].payee}</td>
                                         <td>${obj.expence[i].amountPayed}</td>
@@ -255,26 +255,9 @@ $('#add-expense-btn').click(function() {
                                         <div class="modal-content">
                     
                                             <div class="modal-body">
-                                                <h4>Add New Expense</h4>
-                                                <form id="add-expense">
-                                                    <div class="form-group">
-                                                        <label for="Description">Description</label>
-                                                        <input type="text" class="form-control" id="expense_description" aria-describedby="expense_description" placeholder="Type in Description">
-                                                        <label for="payee">Expense by:</label>
-                                                        <input type="text" class="form-control" id="expense_payee" aria-describedby="expense_payee" placeholder="Enter who made the expense">
-                                                        <label for="amount">Amount</label>
-                                                        <input type="number" class="form-control" id="expense_amount" aria-describedby="expense_amount" placeholder="Amount">
-                                                        <label for="currency">Currency</label>
-                                                        <input type="text" class="form-control" id="expense_currency" aria-describedby="expense_currency" placeholder="Currency">
-                                                        <label for="expensedate">Expense Date</label>
-                                                        <input type="date" class="form-control" id="expense_date" aria-describedby="expense_date" placeholder="Choose Date">
-                                                        <label for="paiddate">Paid Date</label>
-                                                        <input type="date" class="form-control" id="expense_paiddate" aria-describedby="expense_paiddate" placeholder="Choose Date">
-                                                    </div>
-                    
-                                                </form>
+                             
                                                 <!--popup's close button-->
-                                                <button id="add-expense-btn" type="submit" class="close btn btn-primary">Add</button>
+                                                <button id="add-expense-btn" type="submit" class="close btn btn-primary">Save</button>
                                             </div>
                     
                                         </div>
@@ -282,7 +265,7 @@ $('#add-expense-btn').click(function() {
                                     </div>
                                 </div></td>
                                 <td>
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-danger" onclick="DeleteExpense($('#td` + [i] + `').val());">Delete</button>
                                 </td>
                             </tr>
                             </tbody>`);
