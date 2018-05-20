@@ -12,6 +12,7 @@ $out = ['expence' => []];
 
 while($row = mysqli_fetch_assoc($result)){
     $expence = [];
+    $expence['id'] = $row['id'];
     $expence['description'] = $row['description'];
     $expence['payee'] = $row['payee'];
     $expence['amountPayed'] = $row['amount_payed'];
