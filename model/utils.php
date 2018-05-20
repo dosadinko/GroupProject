@@ -36,3 +36,36 @@ function loginCheckByUsername($username, $plainPassword){
         $_SESSION['id'] = $id;
         return 'success';
 }
+
+function createExpence($description, $payee, $amountPayed, $currencyType, $expenceDate, $payedDate, $accountId){
+    $connection = getConnection();
+    $query = "INSERT INTO expences(description, payee, amount_payed, currency_type, expence_date, payed_date, account_id) values('$description', '$payee', $amountPayed, '$currencyType', $expenceDate, $payedDate, $accountId)";
+    $result = mysqli_query($connection, $query);
+    return $result;
+}
+
+function getExpenceById($id){
+    $connection = getConnection();
+    $query = "select * from expences where id=$id";
+    $result = mysqli_query($connection, $query);
+    return $result;
+}
+
+function getExpences(){
+    $connection = getConnection();
+    $query = "select * from expences";
+    $result = mysqli_query($connection, $query);
+    return $result;
+}
+
+function deleteExpenceById($id){
+    $connection = getConnection();
+    $query = "delete from expences where id=$id";
+    $result = mysqli_query($connection, $query);
+    return $result;
+}
+
+/*
+function updateExpence(){
+
+}
