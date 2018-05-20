@@ -168,3 +168,33 @@ $(".open").on("click", function() {
 /*$(".close").on("click", function() {
     $(".popup-overlay, .popup-content").removeClass("active");
 });*/
+$('#add-expense-btn').click(function() {
+
+
+    var description = $("#expense_description").val();
+    var payee = $("#expense_payee").val();
+    var amount = $("#expense_amount").val();
+    var currency = $("#expense_currency").val();
+    var expenseDate = $("#expense_date").val();
+    var paidDate = $("#expense_paiddate").val();
+
+    $.ajax({
+        type: "POST",
+        url: 'RestApi/createExpenceController.php',
+        data: {
+            description: description,
+            expenceDate: expenseDate,
+            payedDate: paidDate,
+            currencyType: currency,
+            payee: payee,
+            amountPayed: amount
+        },
+        success: function(result) {
+            $('.modal-box').text(result).fadeIn(700, function() {
+                setTimeout(function() {
+                    $('.modal-box').fadeOut();
+                }, 2000);
+            });
+        }
+    });
+});
