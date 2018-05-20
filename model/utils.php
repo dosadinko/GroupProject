@@ -51,9 +51,9 @@ function getExpenceById($id){
     return $result;
 }
 
-function getExpences(){
+function getExpencesByUserId($accountId){
     $connection = getConnection();
-    $query = "select * from expences";
+    $query = "select * from expences where account_id=$accountId";
     $result = mysqli_query($connection, $query);
     return $result;
 }
@@ -63,9 +63,4 @@ function deleteExpenceById($id){
     $query = "delete from expences where id=$id";
     $result = mysqli_query($connection, $query);
     return $result;
-}
-
-/*
-function updateExpence(){
-
 }
