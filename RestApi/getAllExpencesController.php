@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['id'] < 1 || $_SESSION == null){
+if ($_SESSION['id'] < 1){
     echo json_encode('authentication failed');
     return;
 }
@@ -23,4 +23,3 @@ while($row = mysqli_fetch_assoc($result)){
 }
 
 echo json_encode($out);
-return;
