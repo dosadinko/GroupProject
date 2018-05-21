@@ -7,7 +7,7 @@ if ($_SESSION['id'] < 1 || $_SESSION == null){
 
 require_once '../model/utils.php';
 
-$id = $_POST['id'];
+$id = $_GET['id'];
 
 $out = [];
 $result = getExpenceById($id);

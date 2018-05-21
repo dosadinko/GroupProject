@@ -63,7 +63,7 @@ $(document).ready(function() {
                                         <td>${formattedTime}</td>
                                         <td>${obj.expence[i].payedDate}</td>
                                         <td>            <!-- Trigger the modal with a button -->
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `">Edit</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `);">Edit</button>
                     
                                         <!-- Modal -->
                                         <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
@@ -73,7 +73,25 @@ $(document).ready(function() {
                                                 <div class="modal-content">
                             
                                                     <div class="modal-body">
-                                                    <button type="submit" class="btn btn-success">Save</button>
+                                                    <h4>Edit Expense</h4>
+                                                    <form id="edit-expense-` + [i] + `">
+                                                        <div class="form-group">
+                                                            <label for="Description">Description</label>
+                                                            <input type="text" class="form-control" id="edit_expense_description_` + [i] + `" aria-describedby="expense_description" placeholder="Type in Description">
+                                                            <label for="payee">Expense by:</label>
+                                                            <input type="text" class="form-control" id="edit_expense_payee_` + [i] + `"" aria-describedby="expense_payee" placeholder="Enter who made the expense">
+                                                            <label for="amount">Amount</label>
+                                                            <input type="number" class="form-control" id="edit_expense_amount_` + [i] + `"" aria-describedby="expense_amount" placeholder="Amount">
+                                                            <label for="currency">Currency</label>
+                                                            <input type="text" class="form-control" id="edit_expense_currency_` + [i] + `"" aria-describedby="expense_currency" placeholder="Currency">
+                                                            <label for="expensedate">Expense Date</label>
+                                                            <input type="date" class="form-control" id="edit_expense_date_` + [i] + `"" aria-describedby="expense_date" placeholder="Choose Date">
+                                                            <label for="paiddate">Paid Date</label>
+                                                            <input type="date" class="form-control" id="edit_expense_paidDate_` + [i] + `"" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                                        </div>
+                        
+                                                    </form>
+                                                    <button type="submit" class="btn btn-success" onclick="EditExpenseShow(` + deleteId + `);">Save</button>
                                                     </div>
                             
                                                 </div>
@@ -263,6 +281,22 @@ $('#add-expense-btn').click(function() {
 
     });
 });
+
+function EditExpenseShow(id) {
+
+    $.ajax({
+
+        type: 'GET',
+        url: 'RestApi/getExpenceByIdController.php',
+        data: { id: id },
+        success: function(data) {
+            var expense = JSON.parse(data);
+            $('input#edit_expense_description_4').val(expense.data.description);
+        }
+    });
+
+
+}
 
 function DeleteExpense(id) {
 
