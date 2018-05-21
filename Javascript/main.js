@@ -70,6 +70,7 @@ $(document).ready(function() {
                                     var year2 = date2.getFullYear();
                                     var formattedTime2 = day2 + '/' + (monthIndex2 + 1) + '/' + year2;
                                     var deleteId = obj.expence[i].id;
+                                    ShowExpensesSum();
                                     $("#root-table").prepend(`
                                     <tbody>
                                     <tr>
@@ -244,6 +245,7 @@ $('#add-expense-btn').click(function() {
                 success: function(data) {
                     var obj = JSON.parse(data);
                     var i = 0;
+                    ShowExpensesSum();
                     $("#root-table").html("");
                     $("#root-table").prepend(`<thead>
                                 <tr>
@@ -365,6 +367,7 @@ function EditExpense(id, indexId) {
                 success: function(data) {
                     var obj = JSON.parse(data);
                     var i = 0;
+                    ShowExpensesSum();
                     $("#root-table").html("");
                     $("#root-table").prepend(`<thead>
                                 <tr>
@@ -516,6 +519,7 @@ function DeleteExpense(id) {
                     success: function(data) {
                         var obj = JSON.parse(data);
                         var i = 0;
+                        ShowExpensesSum();
                         $('#root-table').html("");
                         $("#root-table").prepend(`<thead>
                                 <tr>
@@ -608,6 +612,25 @@ function DeleteExpense(id) {
                     $('#login-div').append('<p id="unknownerror">Unknown error, please try again.</p>');
                 }
             }
+        }
+    });
+
+}
+
+function ShowExpensesSum() {
+
+    $.ajax({
+
+        type: 'GET',
+        url: 'RestApi/sumExpencesController.php',
+        success: function(data) {
+            var sum = JSON.parse(data);
+
+            $('#expensesum').html("");
+            $('#expensesum').html("Expenses sum: " + data);
+        },
+        error: function() {
+            console.log('error');
         }
     });
 
