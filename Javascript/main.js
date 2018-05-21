@@ -46,11 +46,16 @@ $(document).ready(function() {
                                 var i = 0;
                                 $('#root-table').html("");
                                 obj.expence.forEach(function() {
-                                    var date = new Date(obj.expence[i].expenceDate * 1000);
+                                    var date = new Date(+obj.expence[i].expenceDate);
+                                    var date2 = new Date(+obj.expence[i].payedDate);
                                     var day = date.getDate();
                                     var monthIndex = date.getMonth();
                                     var year = date.getFullYear();
-                                    var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                                    var formattedTime = day + ' ' + (monthIndex + 1) + ' ' + year;
+                                    var day2 = date2.getDate();
+                                    var monthIndex2 = date2.getMonth();
+                                    var year2 = date2.getFullYear();
+                                    var formattedTime2 = day2 + ' ' + (monthIndex2 + 1) + ' ' + year2;
                                     var deleteId = obj.expence[i].id;
                                     $("#root-table").prepend(`
                                     <tbody>
@@ -61,7 +66,7 @@ $(document).ready(function() {
                                         <td>${obj.expence[i].amountPayed}</td>
                                         <td>${obj.expence[i].currencyType}</td>
                                         <td>${formattedTime}</td>
-                                        <td>${obj.expence[i].payedDate}</td>
+                                        <td>${formattedTime2}</td>
                                         <td>            <!-- Trigger the modal with a button -->
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `);">Edit</button>
                     
@@ -202,9 +207,9 @@ $('#add-expense-btn').click(function() {
     var amount = $("#expense_amount").val();
     var currency = $("#expense_currency").val();
     var date = new Date($("#expense_date").val());
-    var expenseDate = date.valueOf();
+    var expenseDate = date.getTime();
     var dateTwo = new Date($('#expense_paiddate').val());
-    var paidDate = dateTwo.valueOf();
+    var paidDate = dateTwo.getTime();
 
     $.ajax({
         type: "POST",
@@ -229,11 +234,16 @@ $('#add-expense-btn').click(function() {
                     var i = 0;
                     $("#root-table").html("");
                     obj.expence.forEach(function() {
-                        var date = new Date(obj.expence[i].expenceDate * 1000);
+                        var date = new Date(+obj.expence[i].expenceDate);
+                        var date2 = new Date(+obj.expence[i].payedDate);
                         var day = date.getDate();
                         var monthIndex = date.getMonth();
                         var year = date.getFullYear();
-                        var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                        var formattedTime = day + ' ' + (monthIndex + 1) + ' ' + year;
+                        var day2 = date2.getDate();
+                        var monthIndex2 = date2.getMonth();
+                        var year2 = date2.getFullYear();
+                        var formattedTime2 = day2 + ' ' + (monthIndex2 + 1) + ' ' + year2;
                         var deleteId = obj.expence[i].id;
                         $("#root-table").prepend(`
                             <tbody>
@@ -244,7 +254,7 @@ $('#add-expense-btn').click(function() {
                                 <td>${obj.expence[i].amountPayed}</td>
                                 <td>${obj.expence[i].currencyType}</td>
                                 <td>${formattedTime}</td>
-                                <td>${obj.expence[i].payedDate}</td>
+                                <td>${formattedTime2}</td>
                                 <td>            <!-- Trigger the modal with a button -->
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `">Edit</button>
                     
@@ -329,11 +339,16 @@ function DeleteExpense(id) {
                         var i = 0;
                         $('#root-table').html("");
                         obj.expence.forEach(function() {
-                            var date = new Date(obj.expence[i].expenceDate * 1000);
+                            var date = new Date(+obj.expence[i].expenceDate);
+                            var date2 = new Date(+obj.expence[i].payedDate);
                             var day = date.getDate();
                             var monthIndex = date.getMonth();
                             var year = date.getFullYear();
-                            var formattedTime = day + ' ' + monthIndex + 1 + ' ' + year;
+                            var formattedTime = day + ' ' + (monthIndex + 1) + ' ' + year;
+                            var day2 = date2.getDate();
+                            var monthIndex2 = date2.getMonth();
+                            var year2 = date2.getFullYear();
+                            var formattedTime2 = day2 + ' ' + (monthIndex2 + 1) + ' ' + year2;
                             var deleteId = obj.expence[i].id;
                             $("#root-table").prepend(`
                             <tbody>
@@ -344,7 +359,7 @@ function DeleteExpense(id) {
                                 <td>${obj.expence[i].amountPayed}</td>
                                 <td>${obj.expence[i].currencyType}</td>
                                 <td>${formattedTime}</td>
-                                <td>${obj.expence[i].payedDate}</td>
+                                <td>${formattedTime2}</td>
                                 <td>            <!-- Trigger the modal with a button -->
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `">Edit</button>
                     
