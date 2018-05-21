@@ -83,7 +83,7 @@ $(document).ready(function() {
                                         <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                     
                                 
-                                        <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
+                                        <div class="modal" id="editExpense` + [i] + `" role="dialog">
                                             <div class="modal-dialog">
                             
                                                 
@@ -108,7 +108,7 @@ $(document).ready(function() {
                                                         </div>
                         
                                                     </form>
-                                                    <button  class="btn btn-success" type="button"  onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
+                                                    <button  class="btn btn-success" type="button" data-dismiss="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                                     </div>
                             
                                                 </div>
@@ -284,7 +284,7 @@ $('#add-expense-btn').click(function() {
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                     
                                 
-                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
+                                <div class="modal" id="editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                     
                                         
@@ -309,7 +309,7 @@ $('#add-expense-btn').click(function() {
                                                 </div>
                 
                                             </form>
-                                            <button  class="btn btn-success" data-toggle="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
+                                            <button  type="button" class="btn btn-success" data-dismiss="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                             </div>
 
                                         </div>
@@ -321,7 +321,6 @@ $('#add-expense-btn').click(function() {
                                 </td>
                             </tr>
                             </tbody>`);
-                        $(".modal-backdrop").removeClass("show");
                         i++;
                     })
                 },
@@ -406,7 +405,7 @@ function EditExpense(id, indexId) {
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                     
                                 
-                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
+                                <div class="modal" id="editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body">
@@ -553,10 +552,10 @@ function DeleteExpense(id) {
                                 <td>${obj.expence[i].currencyType}</td>
                                 <td>${formattedTime}</td>
                                 <td>${formattedTime2}</td>
-                                <td>                                           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
+                                <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                     
                                 
-                                <div class="modal fade" id="#editExpense` + [i] + `" role="dialog">
+                                <div class="modal" id="editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                     
                                         
@@ -581,7 +580,7 @@ function DeleteExpense(id) {
                                                 </div>
                 
                                             </form>
-                                            <button  class="btn btn-success" data-toggle="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
+                                            <button  class="btn btn-success" data-dismiss="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                             </div>
                     
                                         </div>
