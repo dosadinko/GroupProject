@@ -51,11 +51,11 @@ $(document).ready(function() {
                                     var day = date.getDate();
                                     var monthIndex = date.getMonth();
                                     var year = date.getFullYear();
-                                    var formattedTime = day + ' ' + (monthIndex + 1) + ' ' + year;
+                                    var formattedTime = day + '/' + (monthIndex + 1) + '/' + year;
                                     var day2 = date2.getDate();
                                     var monthIndex2 = date2.getMonth();
                                     var year2 = date2.getFullYear();
-                                    var formattedTime2 = day2 + ' ' + (monthIndex2 + 1) + ' ' + year2;
+                                    var formattedTime2 = day2 + '/' + (monthIndex2 + 1) + '/' + year2;
                                     var deleteId = obj.expence[i].id;
                                     $("#root-table").prepend(`
                                     <tbody>
@@ -239,11 +239,11 @@ $('#add-expense-btn').click(function() {
                         var day = date.getDate();
                         var monthIndex = date.getMonth();
                         var year = date.getFullYear();
-                        var formattedTime = day + ' ' + (monthIndex + 1) + ' ' + year;
+                        var formattedTime = day + '/' + (monthIndex + 1) + '/' + year;
                         var day2 = date2.getDate();
                         var monthIndex2 = date2.getMonth();
                         var year2 = date2.getFullYear();
-                        var formattedTime2 = day2 + ' ' + (monthIndex2 + 1) + ' ' + year2;
+                        var formattedTime2 = day2 + '/' + (monthIndex2 + 1) + '/' + year2;
                         var deleteId = obj.expence[i].id;
                         $("#root-table").prepend(`
                             <tbody>
@@ -344,11 +344,11 @@ function DeleteExpense(id) {
                             var day = date.getDate();
                             var monthIndex = date.getMonth();
                             var year = date.getFullYear();
-                            var formattedTime = day + ' ' + (monthIndex + 1) + ' ' + year;
+                            var formattedTime = day + '/' + (monthIndex + 1) + '/' + year;
                             var day2 = date2.getDate();
                             var monthIndex2 = date2.getMonth();
                             var year2 = date2.getFullYear();
-                            var formattedTime2 = day2 + ' ' + (monthIndex2 + 1) + ' ' + year2;
+                            var formattedTime2 = day2 + '/' + (monthIndex2 + 1) + '/' + year2;
                             var deleteId = obj.expence[i].id;
                             $("#root-table").prepend(`
                             <tbody>
