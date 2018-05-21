@@ -35,6 +35,7 @@ $(document).ready(function() {
                         }
                     } else if (data === '"success"') {
                         $('#expenses-section').show();
+                        ShowExpensesSum();
                         $('#register-div').hide();
                         $('#login-div').hide();
                         $.ajax({
