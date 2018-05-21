@@ -75,3 +75,13 @@ function updateExpence($id, $description, $payee, $amountPayed, $currencyType, $
     }
     return $result;
 }
+
+function checkEmails($email){
+    $connection = getConnection();
+    $query = "select * from accounts where email='$email'";
+    $result = mysqli_query($connection,$query);
+    if(mysqli_num_rows($result) != 0){
+        return 'error';
+    };
+    return 'success';
+}

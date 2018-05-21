@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['id'] < 1 || $_SESSION == null){
+if ($_SESSION['id'] < 1){
     echo json_encode('authentication failed');
     return;
 }
