@@ -44,20 +44,20 @@ $(document).ready(function() {
                             success: function(data) {
                                 var obj = JSON.parse(data);
                                 var i = 0;
-                                $('#root-table').html("");
+                                $("#root-table").html("");
                                 $("#root-table").prepend(`<thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Description</th>
-                                    <th>The Guy</th>
-                                    <th>Amount Payed</th>
-                                    <th>Currency</th>
-                                    <th>Expence Date</th>
-                                    <th>Payed Date</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>`);
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Description</th>
+                                                <th>The Guy</th>
+                                                <th>Amount Payed</th>
+                                                <th>Currency</th>
+                                                <th>Expence Date</th>
+                                                <th>Payed Date</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>`);
                                 obj.expence.forEach(function() {
                                     var date = new Date(+obj.expence[i].expenceDate);
                                     var date2 = new Date(+obj.expence[i].payedDate);
@@ -71,59 +71,60 @@ $(document).ready(function() {
                                     var formattedTime2 = day2 + '/' + (monthIndex2 + 1) + '/' + year2;
                                     var deleteId = obj.expence[i].id;
                                     $("#root-table").prepend(`
-                                    <tbody>
-                                    <tr>
-                                        <td id="td` + [i] + `">${obj.expence[i].id}</td>
-                                        <td>${obj.expence[i].description}</td>
-                                        <td>${obj.expence[i].payee}</td>
-                                        <td>${obj.expence[i].amountPayed}</td>
-                                        <td>${obj.expence[i].currencyType}</td>
-                                        <td>${formattedTime}</td>
-                                        <td>${formattedTime2}</td>
-                                        <td>            <!-- Trigger the modal with a button -->
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
-                    
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
-                                            <div class="modal-dialog">
+                                        <tbody>
+                                        <tr>
+                                            <td id="td` + [i] + `">${obj.expence[i].id}</td>
+                                            <td>${obj.expence[i].description}</td>
+                                            <td>${obj.expence[i].payee}</td>
+                                            <td>${obj.expence[i].amountPayed}</td>
+                                            <td>${obj.expence[i].currencyType}</td>
+                                            <td>${formattedTime}</td>
+                                            <td>${formattedTime2}</td>
+                                            <td>           
+                                            <button type="button" class="btn btn-warning" data-backdrop="false" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
+                                
+                                            
+                                            <div class="modal fade" id="#editExpense` + [i] + `" role="dialog">
+                                                <div class="modal-dialog">
+                                
+                                                    
+                                                    <div class="modal-content">
+                                
+                                                        <div class="modal-body">
+                                                        <h4>Edit Expense</h4>
+                                                        <form id="edit-expense-` + [i] + `">
+                                                            <div class="form-group">
+                                                                <label for="Description">Description</label>
+                                                                <input type="text" class="form-control" id="edit_expense_description_` + [i] + `" aria-describedby="expense_description" placeholder="Type in Description">
+                                                                <label for="payee">Expense by:</label>
+                                                                <input type="text" class="form-control" id="edit_expense_payee_` + [i] + `"" aria-describedby="expense_payee" placeholder="Enter who made the expense">
+                                                                <label for="amount">Amount</label>
+                                                                <input type="number" class="form-control" id="edit_expense_amount_` + [i] + `"" aria-describedby="expense_amount" placeholder="Amount">
+                                                                <label for="currency">Currency</label>
+                                                                <input type="text" class="form-control" id="edit_expense_currency_` + [i] + `"" aria-describedby="expense_currency" placeholder="Currency">
+                                                                <label for="expensedate">Expense Date</label>
+                                                                <input type="date" class="form-control" id="edit_expense_date_` + [i] + `"" aria-describedby="expense_date" placeholder="Choose Date">
+                                                                <label for="paiddate">Paid Date</label>
+                                                                <input type="date" class="form-control" id="edit_expense_paidDate_` + [i] + `"" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                                            </div>
                             
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                            
-                                                    <div class="modal-body">
-                                                    <h4>Edit Expense</h4>
-                                                    <form id="edit-expense-` + [i] + `">
-                                                        <div class="form-group">
-                                                            <label for="Id">Id</label>
-                                                            <input type="text" class="form-control" id="edit_expense_id_` + [i] + `" aria-describedby="expense_id" placeholder="" hidden>
-                                                            <label for="Description">Description</label>
-                                                            <input type="text" class="form-control" id="edit_expense_description_` + [i] + `" aria-describedby="expense_description" placeholder="Type in Description">
-                                                            <label for="payee">Expense by:</label>
-                                                            <input type="text" class="form-control" id="edit_expense_payee_` + [i] + `"" aria-describedby="expense_payee" placeholder="Enter who made the expense">
-                                                            <label for="amount">Amount</label>
-                                                            <input type="number" class="form-control" id="edit_expense_amount_` + [i] + `"" aria-describedby="expense_amount" placeholder="Amount">
-                                                            <label for="currency">Currency</label>
-                                                            <input type="text" class="form-control" id="edit_expense_currency_` + [i] + `"" aria-describedby="expense_currency" placeholder="Currency">
-                                                            <label for="expensedate">Expense Date</label>
-                                                            <input type="date" class="form-control" id="edit_expense_date_` + [i] + `"" aria-describedby="expense_date" placeholder="Choose Date">
-                                                            <label for="paiddate">Paid Date</label>
-                                                            <input type="date" class="form-control" id="edit_expense_paidDate_` + [i] + `"" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                                        </form>
+                                                        <button  class="btn btn-success" data-toggle="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                                         </div>
-                        
-                                                    </form>
-                                                    <button type="submit" class="btn btn-success">Save</button>
+                                
                                                     </div>
-                            
+                                
                                                 </div>
-                            
-                                            </div>
-                                        </div></td>
-                                        <td>
-                                        <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
-                                        </td>
-                                    </tr>
-                                    </tbody>`);
+                                            </div></td>
+                                            <td>
+                                            <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        `);
+                                        $(".modal-backdrop").removeClass("show");
                                     i++;
+                                    
                                 })
                             },
                             error: function() {
@@ -283,22 +284,20 @@ $('#add-expense-btn').click(function() {
                                 <td>${obj.expence[i].currencyType}</td>
                                 <td>${formattedTime}</td>
                                 <td>${formattedTime2}</td>
-                                <td>            <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
+                                <td>           
+                                <button type="button" class="btn btn-warning" data-backdrop="false" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                     
-                                <!-- Modal -->
-                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
+                                
+                                <div class="modal fade" id="#editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                     
-                                        <!-- Modal content-->
+                                        
                                         <div class="modal-content">
                     
                                             <div class="modal-body">
                                             <h4>Edit Expense</h4>
                                             <form id="edit-expense-` + [i] + `">
                                                 <div class="form-group">
-                                                    <label for="Id">Id</label>
-                                                    <input type="text" class="form-control" id="edit_expense_id_` + [i] + `" aria-describedby="expense_id" placeholder="" hidden>
                                                     <label for="Description">Description</label>
                                                     <input type="text" class="form-control" id="edit_expense_description_` + [i] + `" aria-describedby="expense_description" placeholder="Type in Description">
                                                     <label for="payee">Expense by:</label>
@@ -314,8 +313,7 @@ $('#add-expense-btn').click(function() {
                                                 </div>
                 
                                             </form>
-                                                
-                                            <button class="btn btn-success" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
+                                            <button  class="btn btn-success" data-toggle="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                             </div>
                     
                                         </div>
@@ -326,8 +324,11 @@ $('#add-expense-btn').click(function() {
                                 <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
                                 </td>
                             </tr>
-                            </tbody>`);
+                            </tbody>
+                            `);
+                            $(".modal-backdrop").removeClass("show");
                         i++;
+                        
                     })
                 },
                 error: function() {
@@ -407,14 +408,14 @@ function EditExpense(id,indexId) {
                                 <td>${obj.expence[i].currencyType}</td>
                                 <td>${formattedTime}</td>
                                 <td>${formattedTime2}</td>
-                                <td>            <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
+                                <td>           
+                                <button type="button" class="btn btn-warning" data-backdrop="false" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                     
-                                <!-- Modal -->
-                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
+                                
+                                <div class="modal fade" id="#editExpense` + [i] + `" role="dialog">
                                     <div class="modal-dialog">
                     
-                                        <!-- Modal content-->
+                                        
                                         <div class="modal-content">
                     
                                             <div class="modal-body">
@@ -436,7 +437,7 @@ function EditExpense(id,indexId) {
                                                 </div>
                 
                                             </form>
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
+                                            <button  class="btn btn-success" data-toggle="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                             </div>
                     
                                         </div>
@@ -447,15 +448,17 @@ function EditExpense(id,indexId) {
                                 <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
                                 </td>
                             </tr>
-                            </tbody>`);
+                            </tbody>
+                            `);
+                            $(".modal-backdrop").removeClass("show");
                         i++;
+                        
                     })
                 },
                 error: function() {
                     console.log('error');
                 }
             });
-
         }
 
     });
@@ -524,20 +527,20 @@ function DeleteExpense(id) {
                     success: function(data) {
                         var obj = JSON.parse(data);
                         var i = 0;
-                        $('#root-table').html("");
+                        $("#root-table").html("");
                         $("#root-table").prepend(`<thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Description</th>
-                                    <th>The Guy</th>
-                                    <th>Amount Payed</th>
-                                    <th>Currency</th>
-                                    <th>Expence Date</th>
-                                    <th>Payed Date</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>`);
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Description</th>
+                                        <th>The Guy</th>
+                                        <th>Amount Payed</th>
+                                        <th>Currency</th>
+                                        <th>Expence Date</th>
+                                        <th>Payed Date</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>`);
                         obj.expence.forEach(function() {
                             var date = new Date(+obj.expence[i].expenceDate);
                             var date2 = new Date(+obj.expence[i].payedDate);
@@ -551,57 +554,60 @@ function DeleteExpense(id) {
                             var formattedTime2 = day2 + '/' + (monthIndex2 + 1) + '/' + year2;
                             var deleteId = obj.expence[i].id;
                             $("#root-table").prepend(`
-                            <tbody>
-                            <tr>
-                                <td id="td` + [i] + `">${obj.expence[i].id}</td>
-                                <td>${obj.expence[i].description}</td>
-                                <td>${obj.expence[i].payee}</td>
-                                <td>${obj.expence[i].amountPayed}</td>
-                                <td>${obj.expence[i].currencyType}</td>
-                                <td>${formattedTime}</td>
-                                <td>${formattedTime2}</td>
-                                <td>            <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
-                    
-                                <!-- Modal -->
-                                <div class="modal fade" id="editExpense` + [i] + `" role="dialog">
-                                    <div class="modal-dialog">
-                    
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                    
-                                            <div class="modal-body">
-                                            <h4>Edit Expense</h4>
-                                                    <form id="edit-expense-` + [i] + `">
-                                                        <div class="form-group">
-                                                            <label for="Description">Description</label>
-                                                            <input type="text" class="form-control" id="edit_expense_description_` + [i] + `" aria-describedby="expense_description" placeholder="Type in Description">
-                                                            <label for="payee">Expense by:</label>
-                                                            <input type="text" class="form-control" id="edit_expense_payee_` + [i] + `"" aria-describedby="expense_payee" placeholder="Enter who made the expense">
-                                                            <label for="amount">Amount</label>
-                                                            <input type="number" class="form-control" id="edit_expense_amount_` + [i] + `"" aria-describedby="expense_amount" placeholder="Amount">
-                                                            <label for="currency">Currency</label>
-                                                            <input type="text" class="form-control" id="edit_expense_currency_` + [i] + `"" aria-describedby="expense_currency" placeholder="Currency">
-                                                            <label for="expensedate">Expense Date</label>
-                                                            <input type="date" class="form-control" id="edit_expense_date_` + [i] + `"" aria-describedby="expense_date" placeholder="Choose Date">
-                                                            <label for="paiddate">Paid Date</label>
-                                                            <input type="date" class="form-control" id="edit_expense_paidDate_` + [i] + `"" aria-describedby="expense_paiddate" placeholder="Choose Date">
-                                                        </div>
+                                <tbody>
+                                <tr>
+                                    <td id="td` + [i] + `">${obj.expence[i].id}</td>
+                                    <td>${obj.expence[i].description}</td>
+                                    <td>${obj.expence[i].payee}</td>
+                                    <td>${obj.expence[i].amountPayed}</td>
+                                    <td>${obj.expence[i].currencyType}</td>
+                                    <td>${formattedTime}</td>
+                                    <td>${formattedTime2}</td>
+                                    <td>           
+                                    <button type="button" class="btn btn-warning" data-backdrop="false" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpenseShow(` + deleteId + `,` + [i] + `);">Edit</button>
                         
-                                                    </form>
-                                            <button type="submit" class="btn btn-success">Save</button>
+                                    
+                                    <div class="modal fade" id="#editExpense` + [i] + `" role="dialog">
+                                        <div class="modal-dialog">
+                        
+                                            
+                                            <div class="modal-content">
+                        
+                                                <div class="modal-body">
+                                                <h4>Edit Expense</h4>
+                                                <form id="edit-expense-` + [i] + `">
+                                                    <div class="form-group">
+                                                        <label for="Description">Description</label>
+                                                        <input type="text" class="form-control" id="edit_expense_description_` + [i] + `" aria-describedby="expense_description" placeholder="Type in Description">
+                                                        <label for="payee">Expense by:</label>
+                                                        <input type="text" class="form-control" id="edit_expense_payee_` + [i] + `"" aria-describedby="expense_payee" placeholder="Enter who made the expense">
+                                                        <label for="amount">Amount</label>
+                                                        <input type="number" class="form-control" id="edit_expense_amount_` + [i] + `"" aria-describedby="expense_amount" placeholder="Amount">
+                                                        <label for="currency">Currency</label>
+                                                        <input type="text" class="form-control" id="edit_expense_currency_` + [i] + `"" aria-describedby="expense_currency" placeholder="Currency">
+                                                        <label for="expensedate">Expense Date</label>
+                                                        <input type="date" class="form-control" id="edit_expense_date_` + [i] + `"" aria-describedby="expense_date" placeholder="Choose Date">
+                                                        <label for="paiddate">Paid Date</label>
+                                                        <input type="date" class="form-control" id="edit_expense_paidDate_` + [i] + `"" aria-describedby="expense_paiddate" placeholder="Choose Date">
+                                                    </div>
+                    
+                                                </form>
+                                                <button  class="btn btn-success" data-toggle="modal" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
+                                                </div>
+                        
                                             </div>
-                    
+                        
                                         </div>
-                    
-                                    </div>
-                                </div></td>
-                                <td>
-                                <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
-                                </td>
-                            </tr>
-                            </tbody>`);
+                                    </div></td>
+                                    <td>
+                                    <button type="button" class="btn btn-danger" onclick="DeleteExpense(` + deleteId + `);">Delete</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                `);
+                                $(".modal-backdrop").removeClass("show");
                             i++;
+                            
                         })
                     },
                     error: function() {
