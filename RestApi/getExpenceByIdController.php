@@ -12,6 +12,7 @@ $id = $_GET['id'];
 $out = [];
 $result = getExpenceById($id);
 while($row = mysqli_fetch_assoc($result)){
+    $out['id'] = $row['id'];
     $out['description'] = $row['description'];
     $out['payee'] = $row['payee'];
     $out['amountPayed'] = $row['amount_payed'];

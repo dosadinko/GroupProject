@@ -1,4 +1,5 @@
 <?php
+require_once '../model/utils.php';
 require_once '../model/connection.php';
 $connection = getConnection();
 
