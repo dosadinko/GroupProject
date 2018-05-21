@@ -315,7 +315,7 @@ $('#add-expense-btn').click(function() {
                 
                                             </form>
                                                 
-                                            <button class="btn btn-success" onclick="EditExpense(29,'huhu','huke',25,'hdd',21231321,32231213231);">Save</button>
+                                            <button class="btn btn-success" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                             </div>
                     
                                         </div>
@@ -340,17 +340,23 @@ $('#add-expense-btn').click(function() {
     });
 });
 
-function EditExpense(expenseId, expenseDescription, expensePayee, expenseAmount, expenseCurrency, expenseDate, expensePaidDate) {
-
-
+function EditExpense(id,indexId) {
+    var expenseDescription = $('#edit_expense_description_' + indexId).val();
+    var date = new Date($('#edit_expense_date_' + indexId).val());
+    var expenseDate = date.getTime();
+    var dateTwo = new Date($('#edit_expense_paidDate_' + indexId).val());
+    var paidDate = dateTwo.getTime();
+    var expenseCurrency = $('#edit_expense_currency_' + indexId).val();
+    var expensePayee = $('#edit_expense_payee_' + indexId).val();
+    var expenseAmount = $('#edit_expense_amount_' + indexId).val();
     $.ajax({
-        type: "PUT",
+        type: "POST",
         url: 'RestApi/updateExpenceController.php',
         data: {
-            id: expenseId,
+            id: id,
             description: expenseDescription,
             expenceDate: expenseDate,
-            payedDate: expensePaidDate,
+            payedDate: paidDate,
             currencyType: expenseCurrency,
             payee: expensePayee,
             amountPayed: expenseAmount,
@@ -430,14 +436,7 @@ function EditExpense(expenseId, expenseDescription, expensePayee, expenseAmount,
                                                 </div>
                 
                                             </form>
-                                                   var expenseId =  $('edit_expense_description_` + [i] + `).val();
-                                                   var expenseDescription =  $('edit_expense_description_` + [i] + `).val();
-                                                   var expensePayee =  $('edit_expense_payee_` + [i] + `).val();
-                                                   var expenseAmount =  $('edit_expense_amount_` + [i] + `).val();
-                                                   var expenseCurrency =  $('edit_expense_currency_` + [i] + `).val();
-                                                   var expenseDate =  $('edit_expense_date_` + [i] + `).val();
-                                                   var expensePaidDate =  $('edit_expense_paidDate_` + [i] + `).val();
-                                            <button class="btn btn-success" onclick="EditExpense(expenseId, expenseDescription, expensePayee, expenseAmount, expenseCurrency, expenseDate, expensePaidDate);">Save</button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editExpense` + [i] + `" onclick="EditExpense(` + deleteId + `,` + [i] + `);">Save</button>
                                             </div>
                     
                                         </div>
